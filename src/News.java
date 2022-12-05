@@ -7,9 +7,11 @@ public class News {
     private int count = 0;
     private int nextIn = 0;
     private int nextOut = 0;
+    private LoremIpsum loremIpsum;
 
     public News() {
         this.news = new StringBuffer[MAX_NEWS];
+        loremIpsum = new LoremIpsum();
     }
 
     public synchronized void consume(String threadName) {
@@ -62,7 +64,6 @@ public class News {
     }
 
     private StringBuffer generateLoremIpsum() {
-        LoremIpsum loremIpsum = new LoremIpsum();
         return new StringBuffer(loremIpsum.getWords(15));
     }
 }
